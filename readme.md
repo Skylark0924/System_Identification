@@ -28,7 +28,7 @@
 
    `Jscope`的配置如下，`Sample Rate`是`500Hz`，因此前面是`2000`；`Elf File`就是我们程序编译生成的`RM_frame.axf`文件：
 
-   <img src="E:https://github.com/Skylark0924/System_Identification/blob/master/img/1551072707680.png" width="40%">
+   <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/1551072707680.png" width="40%">
 
    `Jscope`的输出形状大致如下图，蓝色为输入的扫频信号，绿色为角速度值，黄色为角度值：
 
