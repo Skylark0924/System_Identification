@@ -6,7 +6,7 @@
 
 1. 利用MATLAB生成采样频率为500Hz，幅值为1500，从0Hz到10Hz的扫频信号，并生成为txt文件（程序：sweep_wave_script_txt.m)
 
-   ![current_num1](img\current_num1.jpg)
+   ![current_num1](.\img\current_num1.jpg)
 
 2. 利用生成的扫频信号作为`GMY.Intensity`的输入激励电机转动，使用`J-LINK`代替`ST-LINK`作为`Debugger`，需要在`Settings`中检查一下连接。（[J-Link的SWD接线方式](https://blog.csdn.net/gongyuan073/article/details/19830757)）
 
