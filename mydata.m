@@ -1,0 +1,11 @@
+filename = '0126_1502.xlsx';
+range = 'B3083:D15582';
+[num,txt,raw] =  xlsread(filename,range);
+time = 0.002*(1:length(num));
+current_num=num(:,3)/1000;
+anglespeed_num=num(:,2)/1000;
+angle_num=num(:,1)/1000;
+plot(time,current_num,'b'); hold on;
+plot(time,anglespeed_num,'g');hold on;
+plot(time,angle_num, 'r');
+legend('Target','AngleSpeed','Angle');
