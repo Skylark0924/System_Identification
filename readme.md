@@ -36,9 +36,7 @@
 
 1. 利用MATLAB生成采样频率为500Hz，幅值为1500，从0Hz到10Hz的扫频信号，并生成为txt文件（程序：sweep_wave_script_txt.m)
 
-   <div align=center>
-       ![current_num1](https://github.com/Skylark0924/System_Identification/blob/master/img/current_num1.jpg)
-   </div>
+   ![current_num1](https://github.com/Skylark0924/System_Identification/blob/master/img/current_num1.jpg)
 
 2. 利用生成的扫频信号作为`GMY.Intensity`的输入激励电机转动，使用`J-LINK`代替`ST-LINK`作为`Debugger`，需要在`Settings`中检查一下连接。（[J-Link的SWD接线方式](https://blog.csdn.net/gongyuan073/article/details/19830757)）
 
@@ -74,11 +72,8 @@
 
    **注意：**此处三列数据均要除以1000，变换回`double`值。
 
-   <div align=center>
-   ![1](https://github.com/Skylark0924/System_Identification/blob/master/img/1.jpg)
-   </div>
 
-   
+   ![1](https://github.com/Skylark0924/System_Identification/blob/master/img/1.jpg)
 
    上图的输出结果和`Jscope`上意义相同，只不过我使用了相反的扫频信号（当时受到了另一侧的机械限位，以后可以直接用正的扫频信号）
 
@@ -92,9 +87,7 @@
 
    - `Estimate`中选择`State Space Models`，默认采用四阶的，修改为离散时间，点击`Estimate`，可以得到一份辨识报告，适配度在99.96%左右：
 
-     <div align=center>
      ![1551079320799](https://github.com/Skylark0924/System_Identification/blob/master/img/1551079320799.png)
-     </div>
 
    - 此时`Model Views`中就生成了一个模型`ss1`，将其拖拽到`To Workspace`控件上，即可在工作区看到这个模型，**即为辨识到的系统状态空间表达式**。
 
@@ -106,21 +99,15 @@
 
 Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来的模型，`input1`是时间和角速度的增广，`input2`是时间和角度的增广，这两个在`mydataplot.m`中生成。该Simulink模型由速度环和位置环组成，位置环的输出作为速度环的输入，将其与实际角速度进行差分。
 
-<div align=center>
 ![1551079903739](https://github.com/Skylark0924/System_Identification/blob/master/img/1551079903739.png)
-</div>
 
 - 调节PID参数时，先调节速度环的PID：
 
-  <div align=center>
   ![1551080530835](https://github.com/Skylark0924/System_Identification/blob/master/img/1551080530835.png)
-  </div>
 
 - 点击`Tune...`，打开`PID Tuner App`，利用该工具箱调节PID，如下：
 
-  <div align=center>
   ![1551081431700](https://github.com/Skylark0924/System_Identification/blob/master/img/1551081431700.png)
-  </div>
 
 - 调节好速度环之后，输出PID参数，点击`Update Block`，即可在`Block Parameters`中看到调整好的PID参数；
 
@@ -128,8 +115,6 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 - 最后输入、输出的Scope如下图（本例前段数据有异常，只要输入输出相似就好）。
 
-  <div align=center>
   ![1551081111162](https://github.com/Skylark0924/System_Identification/blob/master/img/1551081111162.png)
-  </div>
 
 得到的速度PID和位置PID写入frame的相应电机PID参数中，即可得到较好的效果，接下来在此数据基础上微调即可。
