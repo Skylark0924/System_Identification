@@ -20,7 +20,11 @@
 
    系统的状态方程为：
 
+   <div align=center>
    <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/state1.jpg" width="60%">
+   </div>
+
+   
 
    
 
