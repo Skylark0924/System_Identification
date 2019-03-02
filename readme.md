@@ -43,7 +43,7 @@
 2. 利用生成的扫频信号作为`GMY.Intensity`的输入激励电机转动，使用`J-LINK`代替`ST-LINK`作为`Debugger`，需要在`Settings`中检查一下连接。（[J-Link的SWD接线方式](https://blog.csdn.net/gongyuan073/article/details/19830757)）
 
    <div align=center>
-       <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/8.12.00-5.jpg" width="30%">
+   <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/8.12.00-5.jpg" width="30%">
    </div>
 
    <div align=center>
