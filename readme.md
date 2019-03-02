@@ -20,7 +20,9 @@
 
    系统的状态方程为：
 
-   ![current_num1](https://github.com/Skylark0924/System_Identification/blob/master/img/state1.jpg)
+   <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/state1.jpg" width="60%">
+
+   
 
 
 
