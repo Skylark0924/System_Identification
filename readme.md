@@ -68,9 +68,7 @@
 
    `Jscope`的输出形状大致如下图，蓝色为输入的扫频信号，绿色为角速度值，黄色为角度值：
 
-   <div align=center>
-       ![1551071825317](https://github.com/Skylark0924/System_Identification/blob/master/img/1551071825317.png)
-   </div>
+   ![1551071825317](https://github.com/Skylark0924/System_Identification/blob/master/img/1551071825317.png)
 
 4. 将`Jscope`的数据导出到CSV中，在Excel 365中用**数据导入**功能，将CSV文件转化为`.xlsx`格式，并在Excel中对数据进行必要的预处理，找出一个合适的测量段范围。例如，在`mydata.m`文件中所用的`0126_1502.xlsx`数据的测量段是`B3083:D15582`，从扫频起点开始，正好是12500个采样值，也就是一次扫频信号的输出结果，其中三列分别是扫频信号、角速度、角度。
 
