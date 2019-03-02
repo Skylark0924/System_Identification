@@ -23,10 +23,14 @@
    <div align=center>
    <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/state1.jpg" width="60%">
    </div>
+   或表示为：
+
+   $$\dot{x}(t)=Ax(t)+Bu(t)$$
 
    
 
    
+
 
 
 
@@ -118,3 +122,11 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
   ![1551081111162](https://github.com/Skylark0924/System_Identification/blob/master/img/1551081111162.png)
 
 得到的速度PID和位置PID写入frame的相应电机PID参数中，即可得到较好的效果，接下来在此数据基础上微调即可。
+
+
+
+### 参考文献
+
+[1]  刘豹, 唐万生. 现代控制理论[J]. 2006.
+
+[2]  刘金琨, 沈晓蓉, 赵龙. 系统辨识理论及 MATLAB 仿真[J]. 2013.
