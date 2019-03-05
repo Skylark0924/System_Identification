@@ -77,7 +77,7 @@
        <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/1551072707680.png" width="40%">
    </div>
 
-   `Jscope`的输出形状大致如下图，蓝色为输入的扫频信号，绿色为角速度值，黄色为角度值：
+   使用`Debug`模式运行代码，同时使`Jscope`开始记录。`Jscope`的输出形状大致如下图，蓝色为输入的扫频信号，绿色为角速度值，黄色为角度值：
 
    ![1551071825317](https://github.com/Skylark0924/System_Identification/blob/master/img/1551071825317.png)
 
