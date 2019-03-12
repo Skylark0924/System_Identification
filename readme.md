@@ -174,7 +174,23 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 假设辨识得到的闭环传递函数为Φ(s)，而`sisotool`需要根据开环传递函数进行补偿器的设计，因此需要进行一次变换。
 
-由$$\Phi(s)=\df$$
+由$$\Phi(s)=\frac{G(s)}{1+G(s)}$$
+
+可得原系统的开环传递函数为：
+
+$$G(s)=\frac{\Phi(s)}{1-\Phi(s)}​$$
+
+#### sisotool工具使用和环路整形
+
+sisotool（Single Input Single Output Toolbox）是MATLAB提供的单输入单输出系统补偿器的设计工具。
+
+在MATLAB的命令行窗口输入sisotool，打开sisotool工具。
+
+点击 **Edit Architecture** ，打开系统框架对话框，默认框架即可，选择我们之前计算得到开环传递函数G(s)导入为G，其他保持不变。
+
+导入G之后，界面默认显示内容如下所示：
+
+![img](https://github.com/Skylark0924/System_Identification/blob/master/img/1.png)
 
 ## 参考文献
 
