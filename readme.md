@@ -1,8 +1,12 @@
-# 系统辨识及PID参数调节
+---
+typora-root-url: img
+---
+
+系统辨识及PID参数调节
 
 [github更新地址](https://github.com/Skylark0924/System_Identification) 
 
-### 基础知识
+## 基础知识
 
 1. **系统辨识：** 系统辨识是根据系统的输入输出时间函数来确定描述系统行为的数学模型。现代控制理论中的一个分支。通过辨识建立数学模型的**目的**是估计表征系统行为的重要参数，建立一个能模仿真实系统行为的模型，用当前可测量的系统的输入和输出预测系统输出的未来演变，以及设计控制器。
 
@@ -43,7 +47,9 @@
 
 
 
-### 系统辨识
+## 系统辨识
+
+### 云台YAW轴开环系统辨识
 
 以云台6623电机为例
 
@@ -64,6 +70,12 @@
    <div align=center>
    <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/1551061273990.png" width="80%">
    </div>
+
+   <div align=center>
+   <img src="https://github.com/Skylark0924/System_Identification/blob/master/img/1552394220100.png" width="80%">
+   </div>
+
+   **注意：** `Port`修改为`SW`；`SW Device`中有序列号即表示`JLink`连接成功。
 
 3. 利用`Jscope`监测电流、角度和角速度输出值。此时电机应该**已经安装好了实际的负载**，因为系统辨识是需要得到该电机在工作状态下的传递函数，用这个数学模型来模拟实际情况，因此**需要在装好的车上进行系统辨识**，并且**要保证电机和所带负载在运动行程中没有受到机械限位的约束**。
 
@@ -116,7 +128,9 @@
 
 Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来的模型，`input1`是时间和角速度的增广，`input2`是时间和角度的增广，这两个在`mydataplot.m`中生成。该Simulink模型由速度环和位置环组成，位置环的输出作为速度环的输入，将其与实际角速度进行差分。
 
-![1551079903739](https://github.com/Skylark0924/System_Identification/blob/master/img/1551079903739.png)
+![1551079903739](https://github.com/Skylark0924/System_Identification/blob/master/img/1552395022478.png)
+
+![1552395022478](/../../../Academic_information/To_be_a_Roboticist/1552395022478.png)
 
 - 调节PID参数时，先调节速度环的PID：
 
@@ -136,9 +150,11 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 得到的速度PID和位置PID写入frame的相应电机PID参数中，即可得到较好的效果，接下来在此数据基础上微调即可。
 
+### 云台PITCH轴闭环系统辨识
 
+**使用闭环辨识的原因：** 与yaw轴不同，pitch轴需要克服弹仓的偏重，因此如果直接赋予pitch轴电机扫频信号的电流激励，会出现弹仓太沉，pitch轴完全抬不起的情况。即pitch轴辨识时，若切断反馈回路，会无法工作，这是就要有位置环和速度环来保证云台在一定范围内运动而不失控
 
-### 参考文献
+## 参考文献
 
 [1]  刘豹, 唐万生. 现代控制理论[J]. 2006.
 
