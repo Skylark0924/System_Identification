@@ -152,7 +152,28 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 ### 云台PITCH轴闭环系统辨识
 
-**使用闭环辨识的原因：** 与yaw轴不同，pitch轴需要克服弹仓的偏重，因此如果直接赋予pitch轴电机扫频信号的电流激励，会出现弹仓太沉，pitch轴完全抬不起的情况。即pitch轴辨识时，若切断反馈回路，会无法工作，这是就要有位置环和速度环来保证云台在一定范围内运动而不失控
+**使用闭环辨识的原因：** 与yaw轴不同，pitch轴需要克服弹仓的偏重，因此如果直接赋予pitch轴电机扫频信号的电流激励，会出现弹仓太沉，pitch轴完全抬不起的情况。即pitch轴辨识时，若切断反馈回路，会无法工作，这是就**要有位置环和速度环来保证云台在一定范围内运动而不失控**（初始PID）。
+
+#### 实际系统分析
+
+由于速度环的H(s) = 1，为单位反馈系统，因此原先的PID控制的云台系统简化如下，P(s)为PID控制器，M(s)为云台和电机模型
+
+![img](https://github.com/Skylark0924/System_Identification/blob/master/img/020245to9ifzz6wzhz3jl0.png)
+
+
+![img](https://github.com/Skylark0924/System_Identification/blob/master/img/020245fgtp8mbq5bt7yy8y.png)
+
+这里将原来的PID控制器和云台电机模型看做一个整体，当做被控对象G(s)，针对G(s)设计一个新的控制器C(s)，此即我们所要设计的补偿器。
+
+#### 闭环系统辨识
+
+与开环不同，闭环辨识因为包含了PID反馈回路，不能直接给电流信号，而是应该输入目标角度，输出实际的`imu.pit`。按照开环的步骤进行`Jscope`数据采集以及系统辨识，然后使用`sisotool`工具箱进行环路整形（在MATLAB命令行窗口输入sisotool打开）。
+
+#### 传递函数转换
+
+假设辨识得到的闭环传递函数为Φ(s)，而`sisotool`需要根据开环传递函数进行补偿器的设计，因此需要进行一次变换。
+
+由$$\Phi(s)=\df$$
 
 ## 参考文献
 
