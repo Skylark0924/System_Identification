@@ -160,6 +160,7 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 ![img](https://github.com/Skylark0924/System_Identification/blob/master/img/020245to9ifzz6wzhz3jl0.png)
 
+为了提高性能，我们在PID控制器之前加入补偿器，得到系统框图如下所示：
 
 ![img](https://github.com/Skylark0924/System_Identification/blob/master/img/020245fgtp8mbq5bt7yy8y.png)
 
