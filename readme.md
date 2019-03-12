@@ -1,4 +1,5 @@
 ---
+
 typora-root-url: img
 ---
 
@@ -180,7 +181,7 @@ Simulink模型是`test5_RegularPID.slx`文件。其中`ss1`就是刚辨识出来
 
 $$G(s)=\frac{\Phi(s)}{1-\Phi(s)}​$$
 
-#### sisotool工具使用和环路整形
+#### sisotool工具使用和环路整形（这是一个强大的工具箱）
 
 sisotool（Single Input Single Output Toolbox）是MATLAB提供的单输入单输出系统补偿器的设计工具。
 
@@ -191,6 +192,37 @@ sisotool（Single Input Single Output Toolbox）是MATLAB提供的单输入单�
 导入G之后，界面默认显示内容如下所示：
 
 ![img](https://github.com/Skylark0924/System_Identification/blob/master/img/1.png)
+
+左侧是框架选择和预览区，中间是开环传递函数bode图编辑区，右上方是根轨迹编辑区，右下方是系统的阶跃响应图。
+
+- 点击 **New Plot** 可以根据自己的需求添加图形。例如添加闭环传递函数图、零极点图。
+
+- 点击菜单栏里的 **Store** 按钮，可以将当前的设计保存下来，以方便后续进行对比和回溯。
+
+控制器的设计一般都是基于开环传递函数的零极点，可以手动增加零极点来调整系统，通过观察伯德图和根轨迹图来确定参数是否合理。借助MATLAB的强大的自动调整功能，我们可以使用自动的方式来进行控制器设计。
+
+1. `Tuning Methods`中的`PID Tuning`：
+
+![1552406133882](https://github.com/Skylark0924/System_Identification/blob/master/img/1552406133882.png)
+
+点击`Update Compensator`自动生成补偿器传递函数，可以通过阶跃响应曲线观察是否合适。
+
+2. `Tuning Methods`中的`Optimization Based Tuning`：
+![1552406344201](https://github.com/Skylark0924/System_Identification/blob/master/img/1552406344201.png)
+
+再点击`Design Requirements`右下角的`Add new design requirement`
+
+![1552406473499](https://github.com/Skylark0924/System_Identification/blob/master/img/1552406473499.png)
+
+这里可以自定义想要的响应曲线的上升时间、超调量等参数，然后点击`OK`、`Start Optimization`进行优化迭代得到预想的响应曲线
+
+![1552406649929](https://github.com/Skylark0924/System_Identification/blob/master/img/1552406649929.png)
+
+
+
+最后，根据得到的补偿器传递函数写成C代码写入`RM_frame`中，完成补偿。
+
+
 
 ## 参考文献
 
